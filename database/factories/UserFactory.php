@@ -1,8 +1,9 @@
 <?php
 
 use App\User;
-use Illuminate\Support\Str;
+
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,7 @@ use Faker\Generator as Faker;
 | your application. Factories provide a convenient way to generate new
 | model instances for testing / seeding your application's database.
 |
-*/
+ */
 
 $factory->define(User::class, function (Faker $faker) {
     return [
@@ -24,3 +25,52 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(App\WizMobAppAgent::class, function (Faker $faker) {
+    return [
+        'AgentName' => $faker->FirstName,
+        'GroupID' => $faker->randomDigit(),
+        'Password' => $faker->password(),
+        'IsAdmin' => $faker->biasedNumberBetween($min = 0, $max = 1),
+        'IsActive' => $faker->biasedNumberBetween($min = 0, $max = 1),
+    ];
+});
+
+$factory->define(App\WizMobAppDocument::class, function (Faker $faker) {
+    return [
+        'DocType' => $faker->biasedNumberBetween($min = 1, $max = 15),
+        'DocName' => $faker->word,
+        'AccountName' => $faker->name,
+        'DocDate' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'ExclAmt' => $faker->numberBetween($min = 7000, $max = 90000),
+        'InclAmt' => $faker->numberBetween($min = 7000, $max = 90000),
+        'VATAmt' => $faker->numberBetween($min = 7000, $max = 90000),
+        'AppStatus' =>$faker->biasedNumberBetween($min = 1, $max = 3),
+    ];
+});
+
+$factory->define(App\WizMobAppStatus::class, function (Faker $faker) {
+    return [
+        'AppStat' => $faker->biasedNumberBetween($min = 1, $max = 3),
+        'StatDesc' => $faker->word,
+    ];
+});
+
+$factory->define(App\WizMobAppWorkFlow::class, function (Faker $faker) {
+    return [
+        'DocType' => $faker->biasedNumberBetween($min = 1, $max = 15),
+        'SequenceID' => $faker->biasedNumberBetween($min = 1, $max = 15),
+        'GroupID' => $faker->randomDigit(),
+        'AgentID' => $faker->randomDigit(),
+        'IsApproved' => $faker->biasedNumberBetween($min = 0, $max = 1),
+        
+    ];
+});
+
+$factory->define(App\WizMobAppGroup::class, function (Faker $faker) {
+    return [
+    
+        'GroupName' => $faker->word,
+    ];
+});
+
