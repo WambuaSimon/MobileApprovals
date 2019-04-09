@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\WizMobAppStatus;
 
 class StatusController extends Controller
 {
@@ -13,7 +14,9 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $status = WizMobAppStatus::all();
+        return response()->json(['Success' => true, 'message' => 'Status Retrieved Successfully', 'status' => $status]);
+   
     }
 
     /**
@@ -43,9 +46,14 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($AppStat)
     {
-        //
+        $status = WizMobAppStatus::with('documents')->where('AppStat', $AppStat)->get();
+        // dd($DocType1);
+        if (is_null($status)) {
+            return 'Status Not found';
+        }
+        return response()->json(['Success' => true, 'status' => $status]);
     }
 
     /**

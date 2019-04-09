@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\WizMobAppDocument;
 
+use App\WizMobAppDocument;
 use Illuminate\Http\Request;
 
 class DocumentsController extends Controller
@@ -16,7 +16,7 @@ class DocumentsController extends Controller
     {
         $doc = WizMobAppDocument::all();
         return response()->json(['Success' => true, 'message' => 'Documents Retrieved Successfully', 'documents' => $doc]);
-   
+
     }
 
     /**
@@ -37,7 +37,7 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -46,9 +46,15 @@ class DocumentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($DocType)
     {
-        //
+
+        $DocType1 = WizMobAppDocument::with('workflow')->where('DocType', $DocType)->get();
+        // dd($DocType1);
+        if (is_null($DocType1)) {
+            return 'Document Not found';
+        }
+        return response()->json(['Success' => true, 'document' => $DocType1]);
     }
 
     /**

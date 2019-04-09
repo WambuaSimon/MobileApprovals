@@ -8,6 +8,7 @@ class WizMobAppGroup extends Model
 {
     protected $primaryKey = 'GroupID';
 
+    
 
     public function agents() {
         return $this->hasMany('App\WizMobAppAgent', 'GroupID', 'GroupID');

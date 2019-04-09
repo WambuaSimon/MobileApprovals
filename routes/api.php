@@ -19,7 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
     Route::resource('agents', 'AgentController');
-    Route::resource('documents', 'DocumentsController');
-    
+    Route::resource('documents', 'DocumentsController')->except('show');
+    Route::get('document/{DocType}', 'DocumentsController@show')->name('documents.show');
+    Route::get('groups/{id}', 'GroupController@show');
+    Route::resource('groups', 'GroupController')->except('show');
+    Route::resource('status', 'StatusController')->except('show');
+    Route::get('status/{AppStat}', 'StatusController@show')->name('status.show');
+    Route::resource('workflow','WorkflowController');
 
 });

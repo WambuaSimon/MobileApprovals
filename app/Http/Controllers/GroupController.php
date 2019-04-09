@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\WizMobAppGroup;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -13,7 +13,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $grp = WizMobAppGroup::all();
+        return response()->json(['Success' => true, 'message' => 'Groups Retrieved Successfully', 'groups' => $grp]);
+
     }
 
     /**
@@ -45,7 +47,21 @@ class GroupController extends Controller
      */
     public function show($id)
     {
-        //
+        $grpCtrl = WizMobAppGroup::with('agents')->find($id);
+        if (is_null($grpCtrl)) {
+            return 'Group Not found';
+        }
+
+        return response()->json(['Success' => true,  'group' => $grpCtrl]);
+
+
+
+        // $DocType1 = WizMobAppDocument::with('workflow')->where('DocType', $DocType)->get();
+        // // dd($DocType1);
+        // if (is_null($DocType1)) {
+        //     return 'Document Not found';
+        // }
+        // return response()->json(['Success' => true, 'document' => $DocType1]);
     }
 
     /**

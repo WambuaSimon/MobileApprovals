@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WizMobAppWorkFlow extends Model
 {
-    
+    protected $fillable = [
+        'DocType', 'SequenceID','GroupID','AgentID', 'IsApproved'
+    ];
 }
