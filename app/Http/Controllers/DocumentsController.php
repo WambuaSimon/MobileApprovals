@@ -15,7 +15,7 @@ class DocumentsController extends Controller
     public function index()
     {
         $doc = WizMobAppDocument::all();
-        return response()->json(['Success' => true, 'message' => 'Documents Retrieved Successfully', 'documents' => $doc]);
+        return response()->json(['success' => true, 'message' => 'Documents Retrieved Successfully', 'documents' => $doc]);
 
     }
 

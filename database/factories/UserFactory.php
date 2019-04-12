@@ -38,28 +38,28 @@ $factory->define(App\WizMobAppAgent::class, function (Faker $faker) {
 
 $factory->define(App\WizMobAppDocument::class, function (Faker $faker) {
     return [
-        'DocType' => $faker->biasedNumberBetween($min = 1, $max = 15),
-        'DocName' => $faker->word,
+        'DocType' => $faker->numberBetween($min = 1, $max = 7),
+        'DocName' => $faker->sentence($nbWords = 5, $variableNbWords = true),
         'AccountName' => $faker->name,
         'DocDate' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'ExclAmt' => $faker->numberBetween($min = 7000, $max = 90000),
         'InclAmt' => $faker->numberBetween($min = 7000, $max = 90000),
         'VATAmt' => $faker->numberBetween($min = 7000, $max = 90000),
-        'AppStatus' =>$faker->biasedNumberBetween($min = 1, $max = 3),
+        'AppStatus' =>$faker->numberBetween($min = 1, $max = 4),
     ];
 });
 
 $factory->define(App\WizMobAppStatus::class, function (Faker $faker) {
     return [
-        'AppStat' => $faker->biasedNumberBetween($min = 1, $max = 3),
+        'AppStat' => $faker->numberBetween($min = 1, $max = 4),
         'StatDesc' => $faker->word,
     ];
 });
 
 $factory->define(App\WizMobAppWorkFlow::class, function (Faker $faker) {
     return [
-        'DocType' => $faker->biasedNumberBetween($min = 1, $max = 15),
-        'SequenceID' => $faker->biasedNumberBetween($min = 1, $max = 15),
+        'DocType' => $faker->numberBetween($min = 1, $max = 7),
+        'SequenceID' => $faker->numberBetween($min = 1, $max = 7),
         'GroupID' => $faker->randomDigit(),
         'AgentID' => $faker->randomDigit(),
         'IsApproved' => $faker->biasedNumberBetween($min = 0, $max = 1),
