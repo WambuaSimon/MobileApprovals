@@ -11,11 +11,14 @@ class GroupsSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\WizMobAppGroup', 20)->create()->each(function ($grp) {
+        $groups = factory('App\WizMobAppGroup', 6)->create();
+        
+        
+        $groups->each(function ($grp) {
             $grp->agents()->save(factory(App\WizMobAppAgent::class)->make());
         });
 
-        factory('App\WizMobAppGroup', 20)->create()->each(function ($grp) {
+        $groups->each(function ($grp) {
             $grp->workFlows()->save(factory(App\WizMobAppWorkFlow::class)->make());
         });
     }

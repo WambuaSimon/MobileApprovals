@@ -11,8 +11,11 @@ class StatusesSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\WizMobAppStatus', 20)->create()->each(function ($grp) {
-            $grp->documents()->save(factory(App\WizMobAppDocument::class)->make());
-        });
+        factory('App\WizMobAppStatus', 10)->create();
+        
+        // ->each(function ($grp) {
+        //     $grp->documents()->save(factory(App\WizMobAppDocument::class)->make());
+        // 
+    
     }
 }

@@ -11,6 +11,6 @@ class AgentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\WizMobAppAgent', 20)->create();
+        factory('App\WizMobAppAgent', 10)->create();
     }
 }

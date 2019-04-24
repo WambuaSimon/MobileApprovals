@@ -11,6 +11,6 @@ class WorkFlowsSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\WizMobAppWorkFlow', 20)->create();
+        factory('App\WizMobAppWorkFlow', 10)->create();
     }
 }

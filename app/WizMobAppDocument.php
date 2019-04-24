@@ -17,4 +17,9 @@ class WizMobAppDocument extends Model
     public function workflow() {
         return $this->hasMany('App\WizMobAppWorkFlow', 'DocType','DocType');
      }
+
+     public function appStatus() {
+        return $this->belongsTo('App\WizMobAppStatus', 'AppStatus','AppStat');
+     }
+
 }
