@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\WizMobAppDocument;
+use DB;
 use Illuminate\Http\Request;
 
 class DocumentsController extends Controller
@@ -77,7 +78,15 @@ class DocumentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('wiz_mob_app_documents')
+            ->where('id', $id)
+            ->update(
+                ['RejectionReason' => $request['RejectionReason'],'AppStatus' => $request['AppStatus']]
+            
+           
+
+            );
+
     }
 
     /**

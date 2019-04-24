@@ -60,7 +60,7 @@ $factory->define(App\WizMobAppStatus::class, function (Faker $faker) {
 $factory->define(App\WizMobAppWorkFlow::class, function (Faker $faker) {
     return [
         'DocType' => $faker->numberBetween($min = 1, $max = 7),
-        'SequenceID' => $faker->shuffle(array(1, 2, 3, 4, 5, 6, 7)) 
+        'SequenceID' => $faker->shuffle(array(1, 2, 3, 4, 5, 6, 7)), 
         'GroupID' => $faker->numberBetween($min = 1, $max = 7),
         'AgentID' => $faker->numberBetween($min = 1, $max = 7),
         'IsApproved' => $faker->numberBetween($min = 0, $max = 1),
@@ -70,7 +70,6 @@ $factory->define(App\WizMobAppWorkFlow::class, function (Faker $faker) {
 
 $factory->define(App\WizMobAppGroup::class, function (Faker $faker) {
     return [
-    
         'GroupName' => $faker->word,
     ];
 });

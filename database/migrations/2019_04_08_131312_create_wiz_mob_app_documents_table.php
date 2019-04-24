@@ -23,7 +23,7 @@ class CreateWizMobAppDocumentsTable extends Migration
             $table->float('VATAmt');
             $table->float('InclAmt');
             $table->integer('AppStatus');
-            $table->string('RejectionReason');
+            $table->string('RejectionReason')->nullable();
             $table->timestamps();
         });
     }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\WizMobAppWorkFlow;
+use DB;
+use Illuminate\Http\Request;
 
 class WorkflowController extends Controller
 {
@@ -36,7 +37,7 @@ class WorkflowController extends Controller
     public function store(Request $request)
     {
         $workflow = WizMobAppWorkFlow::create($request->all());
-        return response()->json(['Success' => true, 'message'=> 'Workflow created successfully','workflow' => $workflow]);
+        return response()->json(['Success' => true, 'message' => 'Workflow created successfully', 'workflow' => $workflow]);
     }
 
     /**
@@ -47,7 +48,7 @@ class WorkflowController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -70,7 +71,10 @@ class WorkflowController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('wiz_mob_app_work_flows')
+            ->where('id', $id)
+            ->update(['SequenceID' => $request['SequenceID']]);
+
     }
 
     /**
