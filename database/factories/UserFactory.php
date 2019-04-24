@@ -1,7 +1,6 @@
 <?php
 
 use App\User;
-
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -18,21 +17,14 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
-    ];
-});
-
-$factory->define(App\WizMobAppAgent::class, function (Faker $faker) {
-    return [
-        'AgentName' => $faker->FirstName,
+        'AgentName' => $faker->name,
         'GroupID' => $faker->numberBetween($min = 1, $max = 7),
-        'Password' => $faker->password(),
-        'IsAdmin' => $faker->biasedNumberBetween($min = 0, $max = 1),
-        'IsActive' => $faker->biasedNumberBetween($min = 0, $max = 1),
+
+        'IsAdmin' => $faker->numberBetween($min = 0, $max = 1),
+        'IsActive' => $faker->numberBetween($min = 0, $max = 1),
+     
+        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+       
     ];
 });
 
@@ -45,7 +37,7 @@ $factory->define(App\WizMobAppDocument::class, function (Faker $faker) {
         'ExclAmt' => $faker->numberBetween($min = 7000, $max = 90000),
         'InclAmt' => $faker->numberBetween($min = 7000, $max = 90000),
         'VATAmt' => $faker->numberBetween($min = 7000, $max = 90000),
-        'AppStatus' =>$faker->numberBetween($min = 1, $max = 4),
+        'AppStatus' => $faker->numberBetween($min = 1, $max = 4),
         'RejectionReason' => $faker->sentence($nbWords = 5, $variableNbWords = true),
     ];
 });
@@ -60,11 +52,11 @@ $factory->define(App\WizMobAppStatus::class, function (Faker $faker) {
 $factory->define(App\WizMobAppWorkFlow::class, function (Faker $faker) {
     return [
         'DocType' => $faker->numberBetween($min = 1, $max = 7),
-        'SequenceID' => $faker->shuffle(array(1, 2, 3, 4, 5, 6, 7)), 
+        'SequenceID' => $faker->shuffle(array(1, 2, 3, 4, 5, 6, 7)),
         'GroupID' => $faker->numberBetween($min = 1, $max = 7),
         'AgentID' => $faker->numberBetween($min = 1, $max = 7),
         'IsApproved' => $faker->numberBetween($min = 0, $max = 1),
-        
+
     ];
 });
 
@@ -73,4 +65,3 @@ $factory->define(App\WizMobAppGroup::class, function (Faker $faker) {
         'GroupName' => $faker->word,
     ];
 });
-

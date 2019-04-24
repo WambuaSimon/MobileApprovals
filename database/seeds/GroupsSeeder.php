@@ -15,7 +15,7 @@ class GroupsSeeder extends Seeder
         
         
         $groups->each(function ($grp) {
-            $grp->agents()->save(factory(App\WizMobAppAgent::class)->make());
+            $grp->agents()->save(factory(App\User::class)->make());
         });
 
         $groups->each(function ($grp) {

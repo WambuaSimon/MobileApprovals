@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AgentsTableSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class AgentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\WizMobAppAgent', 10)->create();
+        factory('App\User', 10)->create();
     }
 }

@@ -11,7 +11,7 @@ class WizMobAppGroup extends Model
     
 
     public function agents() {
-        return $this->hasMany('App\WizMobAppAgent', 'GroupID', 'GroupID');
+        return $this->hasMany('App\User', 'GroupID', 'GroupID');
      }
 
 

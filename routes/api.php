@@ -28,3 +28,12 @@ Route::prefix('v1')->group(function () {
     Route::resource('workflow','WorkflowController');
 
 });
+
+
+Route::prefix('v1')->group(function(){
+    Route::post('login', 'UsersController@login');
+
+    Route::group(['middleware' => 'auth:api'], function(){
+    Route::post('getUser', 'UsersController@getUser');
+    });
+   });
