@@ -81,12 +81,9 @@ class DocumentsController extends Controller
         DB::table('wiz_mob_app_documents')
             ->where('id', $id)
             ->update(
-                ['RejectionReason' => $request['RejectionReason'],'AppStatus' => $request['AppStatus']],
-            
-           
-                
+                ['RejectionReason' => $request['RejectionReason'], 'AppStatus' => $request['AppStatus'],],
             );
-            return response()->json(['success' => true, 'message' => 'Document has been updated successfully']);
+        return response()->json(['success' => true, 'message' => 'Document has been updated successfully']);
 
     }
 
