@@ -16,11 +16,12 @@ class UsersController extends Controller
             $user = Auth::user();
             $success['token'] = $user->createToken('AppName')->accessToken;
             return response()->json(['message' => 'User Logged in successfully', 'success' => true, 'data' => $success,
-             'AgentName' => $user['AgentName'], 
+            'AgentID' => $user['id'],
+            'AgentName' => $user['AgentName'], 
              'GroupID' => $user['GroupID'], 
              'IsActive' => $user['IsActive'], 
              'IsAdmin' => $user['IsAdmin'],
-             $this->successStatus]);
+            'status'=> $this->successStatus]);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }
