@@ -15,7 +15,7 @@ class WorkflowController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
