@@ -12,9 +12,11 @@ class DocumentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\WizMobAppDocument', 10)->create()->each(function($doc){
-            $doc->workflow()->save(factory(App\WizMobAppWorkFlow::class)->make());
-               });
+        factory('App\WizMobAppDocument', 10)->create();
+        
+        // $document->each(function($doc){
+        //     $doc->workflow()->save(factory(App\WizMobAppWorkFlow::class)->make());
+        //        });
 
     
     }

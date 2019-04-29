@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\WizMobAppDocument;
+use App\WizMobAppWorkFlow;
 
 class WorkFlowsSeeder extends Seeder
 {
@@ -11,6 +13,8 @@ class WorkFlowsSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\WizMobAppWorkFlow', 10)->create();
+       factory(App\WizMobAppWorkFlow::class, 10)->create()->each(function($workfow){
+            $workfow->document()->save(factory(App\WizMobAppDocument::class)->make());
+               });
     }
 }

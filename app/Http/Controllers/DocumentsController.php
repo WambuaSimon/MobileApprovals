@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\WizMobAppDocument;
+use App\WizMobAppWorkflow;
 use DB;
 use Illuminate\Http\Request;
 
@@ -97,4 +98,5 @@ class DocumentsController extends Controller
     {
         //
     }
+
 }

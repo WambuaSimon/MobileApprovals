@@ -35,6 +35,7 @@ Route::prefix('v1')->group(function () {
         Route::resource('status', 'StatusController')->except('show');
         Route::get('status/{AppStat}', 'StatusController@show')->name('status.show');
         Route::resource('workflow', 'WorkflowController');
-
+        Route::get('groupDocs', 'WorkflowController@groupDocs');
+        // Route::get('groupDocs', 'DocumentsController@groupDocs');
     });
 });

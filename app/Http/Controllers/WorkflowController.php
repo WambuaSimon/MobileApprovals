@@ -87,4 +87,11 @@ class WorkflowController extends Controller
     {
         //
     }
+
+    public function groupDocs()
+    {
+        $grpid = WizMobAppWorkFlow::with('document')->get();
+        return $grpid;
+        return response()->json(['success' => true, 'message' => 'Workflow Retrieved Successfully', 'documents' => $grpid]);
+    }
 }

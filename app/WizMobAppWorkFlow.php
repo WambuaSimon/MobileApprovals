@@ -7,11 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class WizMobAppWorkFlow extends Model
 {
     protected $fillable = [
-        'DocType', 'SequenceID','GroupID','AgentID', 'IsApproved'
+        'DocType', 'SequenceID', 'GroupID', 'AgentID', 'IsApproved',
     ];
-   protected $casts = [
-       'SequenceID' => 'array'
-   ]; 
+    protected $casts = [
+        'SequenceID' => 'array',
+    ];
 
+    public function document()
+    {
+        return $this->hasOne('App\WizMobAppDocument', 'DocType', 'id');
+    }
+    public function group()
+    {
+        return $this->belongsTo('App\WizMobAppGroup', 'GroupID', 'GroupID');
+    }
 
 }
