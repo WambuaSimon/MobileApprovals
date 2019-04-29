@@ -15,7 +15,7 @@ class WorkflowController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -74,6 +74,7 @@ class WorkflowController extends Controller
         DB::table('wiz_mob_app_work_flows')
             ->where('id', $id)
             ->update(['SequenceID' => $request['SequenceID']]);
+        return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
 
     }
 
