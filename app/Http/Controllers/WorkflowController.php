@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\WizMobAppWorkFlow;
 use DB;
+use Auth;
 use Illuminate\Http\Request;
 
 class WorkflowController extends Controller
