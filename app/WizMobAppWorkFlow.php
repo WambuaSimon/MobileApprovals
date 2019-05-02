@@ -9,9 +9,9 @@ class WizMobAppWorkFlow extends Model
     protected $fillable = [
         'DocType', 'SequenceID', 'GroupID', 'AgentID', 'IsApproved',
     ];
-    // protected $casts = [
-    //     'SequenceID' => 'array'
-    // ];
+    protected $casts = [
+        'SequenceID' => 'array'
+    ];
 
     public function document()
     {

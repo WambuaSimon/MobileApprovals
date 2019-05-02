@@ -50,7 +50,7 @@ $factory->define(App\WizMobAppStatus::class, function (Faker $faker) {
 
 $factory->define(App\WizMobAppWorkFlow::class, function (Faker $faker) {
     return [
-        'DocType' => $faker->unique()->randomNumber(),
+        // 'DocType' => $faker->unique()->randomNumber(),
         'SequenceID' => json_encode($faker->shuffle(array(1, 2, 3, 4, 5, 6, 7))),
         'GroupID' => $faker->numberBetween($min = 1, $max = 7),
         'AgentID' => $faker->numberBetween($min = 1, $max = 7),

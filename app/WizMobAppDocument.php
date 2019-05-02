@@ -8,9 +8,9 @@ class WizMobAppDocument extends Model
 {
     protected $primaryKey = 'DocType';
 
-    protected $fillable = [
-        'DocType'
-    ];
+    // protected $fillable = [
+    //     'DocType'
+    // ];
     public function getRouteKeyName()
 {
     return 'DocType'; // db column name
