@@ -2,7 +2,6 @@
 
 use App\User;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +21,15 @@ $factory->define(User::class, function (Faker $faker) {
 
         'IsAdmin' => $faker->numberBetween($min = 0, $max = 1),
         'IsActive' => $faker->numberBetween($min = 0, $max = 1),
-     
+
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-       
+
     ];
 });
 
 $factory->define(App\WizMobAppDocument::class, function (Faker $faker) {
     return [
-        'DocType' => $faker->numberBetween($min = 1, $max = 7),
+
         'DocName' => $faker->sentence($nbWords = 5, $variableNbWords = true),
         'AccountName' => $faker->name,
         'DocDate' => $faker->date($format = 'Y-m-d', $max = 'now'),
@@ -44,15 +43,15 @@ $factory->define(App\WizMobAppDocument::class, function (Faker $faker) {
 
 $factory->define(App\WizMobAppStatus::class, function (Faker $faker) {
     return [
-        'AppStat' => $faker->numberBetween($min = 1, $max = 4),
+
         'StatDesc' => $faker->word,
     ];
 });
 
 $factory->define(App\WizMobAppWorkFlow::class, function (Faker $faker) {
     return [
-        'DocType' => $faker->numberBetween($min = 1, $max = 7),
-        'SequenceID' => $faker->shuffle(array(1, 2, 3, 4, 5, 6, 7)),
+        'DocType' => $faker->unique()->randomNumber(),
+        'SequenceID' => json_encode($faker->shuffle(array(1, 2, 3, 4, 5, 6, 7))),
         'GroupID' => $faker->numberBetween($min = 1, $max = 7),
         'AgentID' => $faker->numberBetween($min = 1, $max = 7),
         'IsApproved' => $faker->numberBetween($min = 0, $max = 1),

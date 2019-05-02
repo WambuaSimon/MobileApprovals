@@ -15,7 +15,7 @@ class WizMobAppWorkFlow extends Model
 
     public function document()
     {
-        return $this->hasOne('App\WizMobAppDocument', 'DocType', 'id');
+        return $this->hasOne('App\WizMobAppDocument', 'DocType', 'DocType');
     }
     public function group()
     {

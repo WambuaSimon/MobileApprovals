@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class WizMobAppDocument extends Model
 {
+    protected $primaryKey = 'DocType';
+
     protected $fillable = [
         'DocType'
     ];

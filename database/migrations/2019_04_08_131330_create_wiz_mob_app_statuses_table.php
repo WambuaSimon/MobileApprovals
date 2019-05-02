@@ -14,8 +14,7 @@ class CreateWizMobAppStatusesTable extends Migration
     public function up()
     {
         Schema::create('wiz_mob_app_statuses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('AppStat');
+            $table->bigIncrements('AppStat');
             $table->string('StatDesc');
             $table->timestamps();
         });
