@@ -94,11 +94,21 @@ class WorkflowController extends Controller
 
     public function groupDocs()
     {
+       
         // dd(Auth::user()->group);
-        $grpid = WizMobAppWorkFlow::with('document.appStatus')->get();
+       $grpids = WizMobAppWorkFlow::with('document.appStatus')->get()->map(function ($workflow) {
+          
+                $workflow->SequenceID = json_decode($workflow->SequenceID, true);
+                // dd($workflow->SequenceID);
+                return $workflow;
+            
+        });
+            
+        
+        // $grpid->SequenceID = json_decode($grpid['SequenceID'],true);
         
         // dd($grpid); 
         // return $grpid;
-        return response()->json(['success' => true, 'message' => 'Workflow Retrieved Successfully', 'documents' => $grpid]);
+        return response()->json(['success' => true, 'message' => 'Workflow Retrieved Successfully', 'documents' => $grpids]);
     }
 }
