@@ -80,7 +80,7 @@ class DocumentsController extends Controller
     public function update(Request $request, $id)
     {
         DB::table('wiz_mob_app_documents')
-            ->where('id', $id)
+            ->where('DocType', $id)
             ->update(
                 ['RejectionReason' => $request['RejectionReason'], 'AppStatus' => $request['AppStatus']]
             );

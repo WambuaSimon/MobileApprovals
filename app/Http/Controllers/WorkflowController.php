@@ -37,8 +37,8 @@ class WorkflowController extends Controller
      */
     public function store(Request $request)
     {
-    //    $request->SequenceID = json_encode($request->SequenceID);
-        // dd($request);
+        dd($request);
+
         $workflow = WizMobAppWorkFlow::create($request->all());
         return response()->json(['Success' => true, 'message' => 'Workflow created successfully', 'workflow' => $workflow]);
     }
@@ -98,17 +98,12 @@ class WorkflowController extends Controller
         // dd(Auth::user()->group);
        $grpids = WizMobAppWorkFlow::with('document.appStatus')->get()->map(function ($workflow) {
           
-                $workflow->SequenceID = json_decode($workflow->SequenceID, true);
+       $workflow->SequenceID = json_decode($workflow->SequenceID);
                 // dd($workflow->SequenceID);
-                return $workflow;
+             return $workflow;
             
         });
-            
-        
-        // $grpid->SequenceID = json_decode($grpid['SequenceID'],true);
-        
-        // dd($grpid); 
-        // return $grpid;
+    
         return response()->json(['success' => true, 'message' => 'Workflow Retrieved Successfully', 'documents' => $grpids]);
     }
 }
