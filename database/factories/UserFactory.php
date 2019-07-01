@@ -39,7 +39,7 @@ $factory->define(App\WizMobAppDocument::class, function (Faker $faker) {
         'Quantity' => $faker->numberBetween($min = 1, $max = 20),
         'Price' => $faker->numberBetween($min = 1000, $max = 10000),
         'Total' => $faker->numberBetween($min = 7000, $max = 90000),
-        'AppStatus' => $faker->numberBetween($min = 1, $max = 4),
+        'AppStatus' => $faker->numberBetween($min = 0, $max = 2),
         'RejectionReason' => $faker->sentence($nbWords = 5, $variableNbWords = true),
     ];
 });
