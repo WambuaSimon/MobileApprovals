@@ -30,7 +30,7 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(App\WizMobAppDocument::class, function (Faker $faker) {
     return [
 
-        'DocName' => $faker->sentence($nbWords = 5, $variableNbWords = true),
+        'DocName' => $faker->name,
         'AccountName' => $faker->name,
         'DocDate' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'ExclAmt' => $faker->numberBetween($min = 7000, $max = 90000),
