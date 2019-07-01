@@ -21,6 +21,9 @@ class CreateWizMobAppDocumentsTable extends Migration
             $table->float('ExclAmt');
             $table->float('VATAmt');
             $table->float('InclAmt');
+            $table->float('Price');
+            $table->float('Quantity');
+            $table->float('Total');
             $table->integer('AppStatus');
             $table->string('RejectionReason')->nullable();
             $table->timestamps();
