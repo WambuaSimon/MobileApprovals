@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class WizMobAppGroup extends Model
 {
     protected $primaryKey = 'GroupID';
-
     
 
     public function agents() {

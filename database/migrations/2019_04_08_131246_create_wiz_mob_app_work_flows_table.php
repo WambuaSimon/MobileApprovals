@@ -14,12 +14,13 @@ class CreateWizMobAppWorkFlowsTable extends Migration
     public function up()
     {
         Schema::create('wiz_mob_app_work_flows', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('DocId');
             $table->integer('DocType')->nullable();
             $table->text('SequenceID');
             $table->integer('GroupID');
-            $table->integer('AgentID');
-            $table->boolean('IsApproved');
+            $table->integer('LastGroup');
+            $table->integer('LastAgent');
+            $table->integer('NextGroup');
             $table->timestamps();
         });
     }

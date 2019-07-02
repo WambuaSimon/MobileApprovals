@@ -14,7 +14,8 @@ class CreateWizMobAppDocumentsTable extends Migration
     public function up()
     {
         Schema::create('wiz_mob_app_documents', function (Blueprint $table) {
-            $table->bigIncrements('DocType');
+            $table->bigIncrements('DocId');
+            $table->integer('DocType');
             $table->string('DocName');
             $table->string('AccountName');
             $table->date('DocDate');

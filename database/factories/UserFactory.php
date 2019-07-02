@@ -29,7 +29,7 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(App\WizMobAppDocument::class, function (Faker $faker) {
     return [
-
+        'DocType' => $faker->numberBetween($min = 0, $max = 8),
         'DocName' => $faker->word,
         'AccountName' => $faker->name,
         'DocDate' => $faker->date($format = 'Y-m-d', $max = 'now'),
@@ -53,11 +53,13 @@ $factory->define(App\WizMobAppStatus::class, function (Faker $faker) {
 
 $factory->define(App\WizMobAppWorkFlow::class, function (Faker $faker) {
     return [
+        'DocType' => $faker->numberBetween($min = 0, $max = 8),
         // 'DocType' => $faker->unique()->randomNumber(),
         'SequenceID' => json_encode($faker->shuffle(array(1, 2, 3, 4, 5, 6, 7))),
-        'GroupID' => $faker->numberBetween($min = 1, $max = 7),
-        'AgentID' => $faker->numberBetween($min = 1, $max = 7),
-        'IsApproved' => $faker->numberBetween($min = 0, $max = 1),
+        'GroupID' => $faker->numberBetween($min = 1, $max = 6),
+        'LastGroup' => $faker->numberBetween($min = 1, $max = 6),
+        'LastAgent' => $faker->numberBetween($min = 1, $max = 10),
+        'NextGroup' => $faker->numberBetween($min = 1, $max = 6),
 
     ];
 });
