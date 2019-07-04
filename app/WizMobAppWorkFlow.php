@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class WizMobAppWorkFlow extends Model
 
-protected $primaryKey = 'DocType';
+
 
 
 {
 
     protected $primaryKey = 'DocType';
 
-    
+
     protected $fillable = [
         'DocType', 'SequenceID', 'AgentID', 'LastGroup','LastAgent','NextGroup','ApprovalStatus'
     ];
