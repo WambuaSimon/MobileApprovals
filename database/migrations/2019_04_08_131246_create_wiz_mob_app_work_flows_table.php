@@ -19,9 +19,9 @@ class CreateWizMobAppWorkFlowsTable extends Migration
             $table->text('SequenceID');
             $table->integer('GroupID');
             $table->integer('AgentID');
-            $table->integer('LastGroup')->nullable();
-            $table->integer('LastAgent')->nullable();
-            $table->integer('NextGroup')->nullable();
+            $table->integer('LastGroup');
+            $table->integer('LastAgent');
+            $table->integer('NextGroup');
             $table->timestamps();
         });
     }
