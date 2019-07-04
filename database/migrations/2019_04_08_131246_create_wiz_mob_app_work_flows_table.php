@@ -22,6 +22,7 @@ class CreateWizMobAppWorkFlowsTable extends Migration
             $table->integer('LastGroup');
             $table->integer('LastAgent');
             $table->integer('NextGroup');
+            $table->integer('ApprovalStatus');
             $table->timestamps();
         });
     }
