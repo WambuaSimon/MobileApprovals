@@ -72,13 +72,34 @@ class WorkflowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function update(Request $request, $id)
+    // {
+    //     dd($request);
+    //    $workflow = WizMobAppWorkFlow::find($id);
+
+    //    $workflow->update($request->all());
+
+    //     return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
+
+    // }
+
     public function update(Request $request, $id)
     {
-       $workflow = WizMobAppWorkFlow::find($id);
+        DB::table('wiz_mob_app_work_flows')
+            ->where('DocType', $id)
+            ->update(
+                [
+                'SequenceID' => $request['SequenceID'], 
+                'AgentID' => $request['AgentID'],
+                'LastGroup' => $request['LastGroup'],
+                'LastAgent' => $request['LastAgent'],
+                'NextGroup' => $request['NextGroup'],
+                'ApprovalStatus' => $request['ApprovalStatus']
+                
+                ]
+            );
+            return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
 
-       $workflow->update($request->all());
-
-        return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
 
     }
 
