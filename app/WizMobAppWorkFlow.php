@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class WizMobAppWorkFlow extends Model
 {
     protected $fillable = [
-        'DocType', 'SequenceID', 'AgentID', 'LastGroup','LastAgent','NextGroup','ApprovalStatus',
+        'DocType', 'SequenceID', 'AgentID', 'LastGroup','LastAgent','NextGroup','ApprovalStatus'
     ];
     protected $casts = [
         'SequenceID' => 'array'
