@@ -17,7 +17,6 @@ class CreateWizMobAppWorkFlowsTable extends Migration
             $table->bigIncrements('DocId');
             $table->integer('DocType')->nullable();
             $table->text('SequenceID');
-            $table->integer('GroupID');
             $table->integer('AgentID');
             $table->integer('LastGroup');
             $table->integer('LastAgent');
