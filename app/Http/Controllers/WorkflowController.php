@@ -74,9 +74,9 @@ class WorkflowController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::table('wiz_mob_app_work_flows')
-            ->where('id', $id)
-            ->update(['SequenceID' => $request['SequenceID']]);
+        $workflow = WizMobAppWorkFlow::where('id', $id)->first();
+
+            $workflow->update($request->all());
         return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
 
     }
