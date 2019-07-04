@@ -10,6 +10,10 @@ protected $primaryKey = 'DocType';
 
 
 {
+
+    protected $primaryKey = 'DocType';
+
+    
     protected $fillable = [
         'DocType', 'SequenceID', 'AgentID', 'LastGroup','LastAgent','NextGroup','ApprovalStatus'
     ];
