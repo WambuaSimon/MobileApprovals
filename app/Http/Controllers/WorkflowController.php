@@ -88,7 +88,7 @@ class WorkflowController extends Controller
 
         $workflow = WizMobAppWorkFlow::find($id);
         
-        $sequence = json_decode($workflow->SequenceID, TRUE);
+        $sequence = json_decode($workflow->SequenceID);
 
         $position = array_search($request['LastGroup'], $sequence);
             
