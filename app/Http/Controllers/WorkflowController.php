@@ -107,7 +107,7 @@ class WorkflowController extends Controller
                 'AgentID' => $request['AgentID'],
                 'LastGroup' => $request['LastGroup'],
                 'LastAgent' => $request['LastAgent'],
-                'NextGroup' => $request['NextGroup'],
+                'NextGroup' => $next,
                 'ApprovalStatus' => $request['ApprovalStatus']
                 
                 ]
