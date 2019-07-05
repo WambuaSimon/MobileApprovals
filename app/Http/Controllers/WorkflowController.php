@@ -89,7 +89,7 @@ class WorkflowController extends Controller
             ->where('DocType', $id)
             ->update(
                 [
-                'SequenceID' => $request['SequenceID'], 
+                // 'SequenceID' => $request['SequenceID'], 
                 'AgentID' => $request['AgentID'],
                 'LastGroup' => $request['LastGroup'],
                 'LastAgent' => $request['LastAgent'],
