@@ -85,6 +85,20 @@ class WorkflowController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $workflow = WizMobAppWorkFlow::find($id);
+        
+        $sequence = json_decode($workflow->SequenceID, TRUE);
+
+        $position = array_search($request['LastGroup'], $sequence);
+            
+        $nextpos = $position + 1;
+
+        $next = $sequence[$nextpos];
+        
+
+        
+
         DB::table('wiz_mob_app_work_flows')
             ->where('DocType', $id)
             ->update(
