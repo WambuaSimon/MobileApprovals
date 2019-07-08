@@ -16,7 +16,7 @@ class CreateWizMobAppWorkFlowsTable extends Migration
         Schema::create('wiz_mob_app_work_flows', function (Blueprint $table) {
             $table->bigIncrements('DocId');
             $table->integer('DocType')->nullable();
-            $table->text('SequenceID');
+            $table->text('SequenceID')->nullable();
             $table->integer('AgentID');
             $table->integer('LastGroup');
             $table->integer('LastAgent');
