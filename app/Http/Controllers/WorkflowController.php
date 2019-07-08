@@ -108,7 +108,7 @@ class WorkflowController extends Controller
                 'AgentID' => $request['AgentID'],
                 'LastGroup' => $request['LastGroup'],
                 'LastAgent' => $request['LastAgent'],
-                'ApprovalStatus' => $appStatus,
+                'ApprovalStatus' => '1',
 
             ]
         );
@@ -129,7 +129,7 @@ class WorkflowController extends Controller
                     'LastGroup' => $request['LastGroup'],
                     'LastAgent' => $request['LastAgent'],
                     'NextGroup' => $next,
-                    'ApprovalStatus' => $appStatus,
+                    'ApprovalStatus' => '2',
 
                 ]
             );
