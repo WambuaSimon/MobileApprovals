@@ -100,6 +100,20 @@ class WorkflowController extends Controller
             // dd(sizeof($sequence));
             $appStatus = '1';
 
+        DB::table('wiz_mob_app_work_flows')
+        ->where('DocType', $id)
+        ->update(
+            [
+                // 'SequenceID' => $request['SequenceID'],
+                'AgentID' => $request['AgentID'],
+                'LastGroup' => $request['LastGroup'],
+                'LastAgent' => $request['LastAgent'],
+                'ApprovalStatus' => $appStatus,
+
+            ]
+        );
+         return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
+
         }
 
         $next = $sequence[$nextpos];
@@ -120,6 +134,7 @@ class WorkflowController extends Controller
                 ]
             );
         return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
+
 
     }
 
