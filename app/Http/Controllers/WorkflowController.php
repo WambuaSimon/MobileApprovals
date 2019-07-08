@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\WizMobAppWorkFlow;
 use DB;
-use Auth;
 use Illuminate\Http\Request;
 
 class WorkflowController extends Controller
@@ -85,17 +84,37 @@ class WorkflowController extends Controller
 
     public function update(Request $request, $id)
     {
+// dd($request->all());
 
         $workflow = WizMobAppWorkFlow::find($id);
-        
+
         $sequence = json_decode($workflow->SequenceID);
 
         $position = array_search($request['LastGroup'], $sequence);
-            
+
         $nextpos = $position + 1;
 
         $next = $sequence[$nextpos];
-        
+
+        if ($nextpos > sizeof($sequence))
+         {
+            
+                DB::table('wiz_mob_app_work_flows')
+                ->where('DocType', $id)
+                ->update(
+                    [
+                        // 'SequenceID' => $request['SequenceID'],
+                        'AgentID' => $request['AgentID'],
+                        'LastGroup' => $request['LastGroup'],
+                        'LastAgent' => $request['LastAgent'],
+                        'NextGroup' => $next,
+                        'ApprovalStatus' => "1",
+
+                    ]
+                );
+                return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
+
+        }
 
         
 
@@ -103,17 +122,16 @@ class WorkflowController extends Controller
             ->where('DocType', $id)
             ->update(
                 [
-                'SequenceID' => $request['SequenceID'], 
-                'AgentID' => $request['AgentID'],
-                'LastGroup' => $request['LastGroup'],
-                'LastAgent' => $request['LastAgent'],
-                'NextGroup' => $next,
-                'ApprovalStatus' => $request['ApprovalStatus']
-                
+                    // 'SequenceID' => $request['SequenceID'],
+                    'AgentID' => $request['AgentID'],
+                    'LastGroup' => $request['LastGroup'],
+                    'LastAgent' => $request['LastAgent'],
+                    'NextGroup' => $next,
+                    'ApprovalStatus' => $request['ApprovalStatus'],
+
                 ]
             );
-            return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
-
+        return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
 
     }
 
@@ -130,16 +148,16 @@ class WorkflowController extends Controller
 
     public function groupDocs()
     {
-       
+
         // dd(Auth::user()->group);
-       $grpids = WizMobAppWorkFlow::with('document.appStatus')->get()->map(function ($workflow) {
-          
-       $workflow->SequenceID = json_decode($workflow->SequenceID);
-                // dd($workflow->SequenceID);
-             return $workflow;
-            
+        $grpids = WizMobAppWorkFlow::with('document.appStatus')->get()->map(function ($workflow) {
+
+            $workflow->SequenceID = json_decode($workflow->SequenceID);
+            // dd($workflow->SequenceID);
+            return $workflow;
+
         });
-    
+
         return response()->json(['success' => true, 'message' => 'Workflow Retrieved Successfully', 'documents' => $grpids]);
     }
 }
