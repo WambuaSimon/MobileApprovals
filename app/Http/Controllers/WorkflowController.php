@@ -112,7 +112,7 @@ class WorkflowController extends Controller
 
             ]
         );
-         return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
+         return response()->json(['success' => true, 'message' => 'Document has been Approved successfully']);
 
         }
 
