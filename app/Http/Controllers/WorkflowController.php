@@ -94,29 +94,17 @@ class WorkflowController extends Controller
 
         $nextpos = $position + 1;
 
-        $next = $sequence[$nextpos];
+        $appStatus = '2';
 
-        if ($nextpos > sizeof($sequence))
-         {
-            
-                DB::table('wiz_mob_app_work_flows')
-                ->where('DocType', $id)
-                ->update(
-                    [
-                        // 'SequenceID' => $request['SequenceID'],
-                        'AgentID' => $request['AgentID'],
-                        'LastGroup' => $request['LastGroup'],
-                        'LastAgent' => $request['LastAgent'],
-                        'NextGroup' => $next,
-                        'ApprovalStatus' => "1",
-
-                    ]
-                );
-                return response()->json(['success' => true, 'message' => 'Workflow has been updated successfully']);
+        if ($nextpos > (sizeof($sequence) - 1)) {
+            // dd(sizeof($sequence));
+            $appStatus = '1';
 
         }
 
-        
+        $next = $sequence[$nextpos];
+
+        // dd('not');
 
         DB::table('wiz_mob_app_work_flows')
             ->where('DocType', $id)
@@ -127,7 +115,7 @@ class WorkflowController extends Controller
                     'LastGroup' => $request['LastGroup'],
                     'LastAgent' => $request['LastAgent'],
                     'NextGroup' => $next,
-                    'ApprovalStatus' => $request['ApprovalStatus'],
+                    'ApprovalStatus' => $appStatus,
 
                 ]
             );
