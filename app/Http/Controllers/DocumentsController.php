@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\WizMobAppDocument;
+use App\WizMobAppWorkflow;
 use DB;
 use Illuminate\Http\Request;
 
@@ -78,17 +79,11 @@ class DocumentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $doc = DB::table('wiz_mob_app_documents')
-            ->where('DocType', $id)->firstOrFail();
-        if ($doc->AppStatus == 0) {
-            $doc->update(
-                ['RejectionReason' => $request['RejectionReason'], 'AppStatus' => 3]
-            );
-        } else {
-            $doc->update(
+        DB::table('wiz_mob_app_documents')
+            ->where('DocType', $id)
+            ->update(
                 ['RejectionReason' => $request['RejectionReason'], 'AppStatus' => $request['AppStatus']]
             );
-        }
         return response()->json(['success' => true, 'message' => 'Document has been updated successfully']);
 
     }

@@ -38,7 +38,9 @@ class WorkflowController extends Controller
     {
         // dd($request);
 
-        $workflow = WizMobAppWorkFlow::create($request->all());
+        $workflow = new WizMobAppWorkFlow();
+        $workflow->
+        ::create($request->all());
         return response()->json(['Success' => true, 'message' => 'Workflow created successfully', 'workflow' => $workflow]);
     }
 
