@@ -27,7 +27,6 @@ Route::prefix('v1')->group(function () {
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('getUser', 'UsersController@getUser');
-
         Route::resource('documents', 'DocumentsController')->except('show');
         Route::get('document/{DocType}', 'DocumentsController@show')->name('documents.show');
         Route::get('groups/{id}', 'GroupController@show');
